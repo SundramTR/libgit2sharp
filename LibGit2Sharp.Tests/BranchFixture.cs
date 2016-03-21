@@ -394,7 +394,7 @@ namespace LibGit2Sharp.Tests
             using (var repo = new Repository(path))
             {
                 Branch master = repo.Branches["master"];
-                Assert.Equal(repo.Network.Remotes["origin"], master.Remote);
+                Assert.Equal("origin", master.Remote.Name);
             }
         }
 
@@ -440,7 +440,7 @@ namespace LibGit2Sharp.Tests
             using (var repo = new Repository(path))
             {
                 var master = repo.Branches["origin/master"];
-                Assert.Equal(repo.Network.Remotes["origin"], master.Remote);
+                Assert.Equal("origin", master.Remote.Name);
             }
         }
 
@@ -732,7 +732,7 @@ namespace LibGit2Sharp.Tests
 
                 Assert.True(branch.IsTracking);
                 Assert.Equal(trackedBranch, branch.TrackedBranch);
-                Assert.Equal(upstreamRemote, branch.Remote);
+                Assert.Equal("origin", branch.Remote.Name);
             }
         }
 
@@ -793,7 +793,7 @@ namespace LibGit2Sharp.Tests
                 Assert.True(updatedBranch.IsTracking);
                 Assert.Equal(trackedBranch, updatedBranch.TrackedBranch);
                 Assert.Equal(upstreamBranchName, updatedBranch.UpstreamBranchCanonicalName);
-                Assert.Equal(upstreamRemote, updatedBranch.Remote);
+                Assert.Equal(remoteName, updatedBranch.Remote.Name);
             }
         }
 
